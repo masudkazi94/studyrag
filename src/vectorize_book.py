@@ -27,3 +27,17 @@ def vectorize_book_and_store_to_db(class_subject_name, vector_db_name):
     Chroma.from_documents(documents=text_chunks, embedding=embedding, persist_directory=vector_db_path)
     print(f"{class_subject_name} saved to vector db: {vector_db_name}")
     return 0
+
+def vectorize_chapters(class_subject_name):
+    book_dir=f"{data_dir}/{class_subject_name}"
+    for chapter in os.listdir(book_dir):
+        if not chapter.endswith('.pdf'):
+            continue
+        chapter_name= chapter[:-4]
+        chapter_path_pdf=f"{book_dir}/{chapter}"
+        loader= UnstructuredFileLoader(chapter_path_pdf)
+        documents=loader.load()
+        texts=text_splitter.split_documents(documents)
+        Chroma.from_documents(documents=texts, embedding=embedding, persist_directory=f"{chapters_vector_db_dir}/{chapter_name}")
+        print(f"{chapter_name} chapter vectorized")
+    return 0
