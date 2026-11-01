@@ -8,9 +8,12 @@ def get_chapter_list(selected_subject):
         subject_name=selected_subject.lower()
         chapters_list_dir= f"{parent_dir}/data/class_12/{subject_name}"
         if not os.path.exists(chapters_list_dir):
-            return ["No data found for this subject"]
+            return ["All Chapters"]
         
         chapters_list=os.listdir(chapters_list_dir)
         chapters_list=[x[:-4] for x in chapters_list]
-        #chapters_list.sort(key=lambda x: int(x.split('.')[0]))
+        chapters_list.insert(0, "All Chapters") 
+        
         return chapters_list
+    
+    return ["All Chapters"]
