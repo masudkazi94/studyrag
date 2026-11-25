@@ -1,4 +1,4 @@
-# studyrag# 📚 StudyPal – RAG Study Assistant
+#📚 Study Assist – RAG Study Assistant
 
 An AI-powered study assistant that helps students understand their study material through conversational AI. Built using **Retrieval-Augmented Generation (RAG)**, StudyPal allows students to ask questions from their textbooks and chapter-specific PDFs and receive context-aware answers, along with relevant YouTube video recommendations.
 
